@@ -8,20 +8,51 @@ lerna-debug.log*
 
 # Node modules
 node_modules/
-client/node_modules/
+backend/node_modules/
 server/node_modules/
+mobile/node_modules/
 
 # Build output
-mobile/dist/
-mobile/.vite/
-backend/dist/
 dist/
 dist-ssr/
+backend/dist/
+mobile/dist/
+mobile/.vite/
+mobile/web-build/
+
+# Expo
+mobile/.expo/
+expo-env.d.ts
+
+# Native
+mobile/.kotlin/
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Metro
+mobile/.metro-health-check*
+
+# Debug
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# macOS
+.DS_Store
+*.pem
 
 # Environment files
 .env
-mobile/.env
 backend/.env
+mobile/.env
+.env*.local
+
+# TypeScript
+*.tsbuildinfo
 
 # Editor files
 .vscode/*
@@ -33,6 +64,10 @@ backend/.env
 *.sln
 *.sw?
 
-# System files
-.DS_Store
+# Local/project-specific
 *.local
+app-example
+
+# Generated native folders
+mobile/ios/
+mobile/android/
