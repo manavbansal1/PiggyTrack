@@ -14,14 +14,14 @@ server/node_modules/
 # Build output
 mobile/dist/
 mobile/.vite/
-server/dist/
+backend/dist/
 dist/
 dist-ssr/
 
 # Environment files
 .env
 mobile/.env
-server/.env
+backend/.env
 
 # Editor files
 .vscode/*
