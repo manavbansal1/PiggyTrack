@@ -4,8 +4,12 @@ import { sql } from './config/db.js';
 import rateLimiter from './middleware/rateLimiter.js';
 import transactionsRoutes from './routes/transactionsRoute.js';
 import { startServer } from './config/db.js';
+import job from './config/cron.js';
 
 dotenv.config();
+if (process.env.NODE_ENV === 'production') {
+    job.start();
+}
 
 const app = express();
 app.use(rateLimiter);
@@ -17,6 +21,11 @@ const PORT = process.env.PORT || 5001;
 app.get('/', (req, res) => {
     res.send('Welcome to the PiggyTrack API');
 });
+
+app.get('/api/health', (req, res) => {
+    res.status(200).json({ status: 'ok' });
+});
+
 
 app.use('/api/transactions', transactionsRoutes);
 

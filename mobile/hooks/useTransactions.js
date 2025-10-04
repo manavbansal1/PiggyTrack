@@ -4,7 +4,7 @@ import { Alert } from 'react-native'
 
 export const useTransactions = (userID) => {
 
-    const API_URL = "http://localhost:5001/api";
+    const API_URL = "https://piggytrack-bvrg.onrender.com/api";
 
     const [transactions, setTransactions] = useState([])
     const [summary, setSummary] = useState(
