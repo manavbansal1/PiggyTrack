@@ -1,10 +1,10 @@
 // React Hook to fetch transactions
 import { useState, useCallback } from 'react'
 import { Alert } from 'react-native'
+import { API_URL } from '../constants/api'
 
 export const useTransactions = (userID) => {
 
-    const API_URL = "https://piggytrack-bvrg.onrender.com/api";
 
     const [transactions, setTransactions] = useState([])
     const [summary, setSummary] = useState(
