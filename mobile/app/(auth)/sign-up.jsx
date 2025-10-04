@@ -39,7 +39,15 @@ export default function SignUpScreen() {
     } catch (err) {
       // See https://clerk.com/docs/custom-flows/error-handling
       // for more info on error handling
-      console.error(JSON.stringify(err, null, 2))
+      if (err.errors[0].code === 'form_identifier_exists') {
+        setError('Email address already in use')
+      } else if (err.errors[0].code === 'form_password_too_weak') {
+        setError('Password is too weak. Please choose a stronger password.')
+      } else if (err.errors[0].code === 'form_param_format_invalid') {
+        setError('Invalid email address or password')
+      } else {
+        setError('An error occurred. Please try again.')
+      }
     }
   }
 
@@ -61,12 +69,18 @@ export default function SignUpScreen() {
       } else {
         // If the status is not complete, check why. User may need to
         // complete further steps.
-        console.error(JSON.stringify(signUpAttempt, null, 2))
+        setError('Invalid verification code')
       }
     } catch (err) {
-      // See https://clerk.com/docs/custom-flows/error-handling
-      // for more info on error handling
-      console.error(JSON.stringify(err, null, 2))
+      if (err.errors[0].code === 'form_identifier_exists') {
+        setError('Email address already in use')
+      } else if (err.errors[0].code === 'form_password_too_weak') {
+        setError('Password is too weak. Please choose a stronger password.')
+      } else if (err.errors[0].code === 'form_param_format_invalid') {
+        setError('Invalid email address or password')
+      } else {
+        setError('An error occurred. Please try again.')
+      }
     }
   }
 
@@ -105,6 +119,7 @@ export default function SignUpScreen() {
       contentContainerStyle={{ flexGrow : 1 }}
       enableOnAndroid={true}
       enableAutomaticScroll={true}
+      extraScrollHeight={30}
     >
       <View style={styles.container}>
         <Image source={require("../../assets/images/revenue-i2.png")} style={styles.illustration} />
